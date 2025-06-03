@@ -22,10 +22,13 @@ db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
-// Basic routes
+// Routes
 app.get('/', (req, res) => {
   res.json({ message: 'Place MVP API running successfully' });
 });
+
+// Property routes
+app.use('/api/properties', require('./routes/properties'));
 
 // Start server
 app.listen(PORT, () => {

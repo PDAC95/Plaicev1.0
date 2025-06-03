@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import './SearchBar.css';
 
-const SearchBar = () => {
+const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log('Searching for:', searchTerm);
-    // Here we will implement the actual search logic later
+    onSearch(searchTerm);
+  };
+
+  const handleAdvancedSearch = () => {
+    // Placeholder for advanced search functionality
+    alert('Advanced search coming soon!');
   };
 
   return (
@@ -25,7 +29,7 @@ const SearchBar = () => {
             Search
           </button>
         </div>
-        <button type="button" className="advanced-search-btn">
+        <button type="button" className="advanced-search-btn" onClick={handleAdvancedSearch}>
           Advanced Search
         </button>
       </form>
