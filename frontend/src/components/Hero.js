@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchBar from './SearchBar';
 import './Hero.css';
 
 const Hero = () => {
@@ -10,6 +11,7 @@ const Hero = () => {
         <button className="cta-button">Start Searching</button>
       </div>
       <div className="hero-overlay"></div>
+      <SearchBar />
     </section>
   );
 };

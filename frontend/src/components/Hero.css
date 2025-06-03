@@ -77,4 +77,17 @@
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
   }
+  .hero {
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
+  background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1773&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
+}
 }
