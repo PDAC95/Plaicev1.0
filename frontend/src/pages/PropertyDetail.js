@@ -42,6 +42,34 @@ const PropertyDetail = () => {
     setShowContactForm(false);
   };
 
+const formatPrice = (price) => {
+  if (typeof price === 'number') {
+    return price.toLocaleString();
+  }
+  // If it's a string, try to parse it and remove commas
+  if (typeof price === 'string') {
+    const numPrice = parseFloat(price.replace(/,/g, ''));
+    if (!isNaN(numPrice)) {
+      return numPrice.toLocaleString();
+    }
+  }
+  return price || '0';
+};
+
+const formatArea = (area) => {
+  if (typeof area === 'number') {
+    return area.toLocaleString();
+  }
+  // If it's a string, try to parse it and remove commas
+  if (typeof area === 'string') {
+    const numArea = parseFloat(area.replace(/,/g, ''));
+    if (!isNaN(numArea)) {
+      return numArea.toLocaleString();
+    }
+  }
+  return area || '0';
+};
+
   if (loading) {
     return (
       <div className="property-detail-container">
@@ -64,6 +92,10 @@ const PropertyDetail = () => {
     );
   }
 
+  if (!property) {
+    return null;
+  }
+
   return (
     <div className="property-detail-container">
       <div className="property-detail">
@@ -74,7 +106,7 @@ const PropertyDetail = () => {
         <div className="property-header">
           <div className="property-image-large">
             <img src={property.image} alt={property.title} />
-            <div className="property-price-large">${property.price}</div>
+            <div className="property-price-large">${formatPrice(property.price)}</div>
           </div>
         </div>
 
@@ -94,7 +126,7 @@ const PropertyDetail = () => {
               </div>
               <div className="spec-item">
                 <span className="spec-icon">📐</span>
-                <span className="spec-text">{property.area} sq ft</span>
+                <span className="spec-text">{formatArea(property.area)} sq ft</span>
               </div>
               <div className="spec-item">
                 <span className="spec-icon">🏠</span>
@@ -106,7 +138,7 @@ const PropertyDetail = () => {
               <h3>About This Property</h3>
               <p>
                 {property.description || 
-                 `Beautiful ${property.type} located in ${property.location}. This stunning property features ${property.bedrooms} bedrooms and ${property.bathrooms} bathrooms across ${property.area} square feet of living space. Perfect for families looking for comfort and convenience in a prime location.`
+                 `Beautiful ${property.type} located in ${property.location}. This stunning property features ${property.bedrooms} bedrooms and ${property.bathrooms} bathrooms across ${formatArea(property.area)} square feet of living space. Perfect for families looking for comfort and convenience in a prime location.`
                 }
               </p>
             </div>

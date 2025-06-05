@@ -10,7 +10,7 @@ const propertySchema = new mongoose.Schema({
     required: true
   },
   price: {
-    type: String,
+    type: Number,
     required: true
   },
   bedrooms: {
@@ -22,7 +22,7 @@ const propertySchema = new mongoose.Schema({
     required: true
   },
   area: {
-    type: String,
+    type: Number,
     required: true
   },
   image: {
