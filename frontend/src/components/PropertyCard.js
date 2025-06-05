@@ -1,9 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './PropertyCard.css';
 
 const PropertyCard = ({ property }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/property/${property._id}`);
+  };
+
   return (
-    <div className="property-card">
+    <div className="property-card" onClick={handleCardClick}>
       <div className="property-image">
         <img src={property.image} alt={property.title} />
         <div className="property-price">${property.price}</div>

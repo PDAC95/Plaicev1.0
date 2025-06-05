@@ -1,24 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import PropertyList from './components/PropertyList';
 import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import PropertyDetail from './pages/PropertyDetail';
 import './App.css';
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const handleSearch = (term) => {
-    setSearchTerm(term);
-  };
-
   return (
-    <div className="App">
-      <Header />
-      <Hero onSearch={handleSearch} />
-      <PropertyList searchTerm={searchTerm} />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/property/:id" element={<PropertyDetail />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
