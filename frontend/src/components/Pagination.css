@@ -5,6 +5,7 @@
   gap: 1rem;
   margin: 3rem 0;
   padding: 0 2rem;
+  flex-wrap: wrap;
 }
 
 .pagination-btn {
@@ -17,23 +18,28 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s;
+  white-space: nowrap;
 }
 
 .pagination-btn:hover:not(:disabled) {
   background-color: #2563eb;
   color: white;
   border-color: #2563eb;
+  transform: translateY(-1px);
 }
 
 .pagination-btn:disabled {
   background-color: #e5e7eb;
   color: #9ca3af;
   cursor: not-allowed;
+  transform: none;
 }
 
 .page-numbers {
   display: flex;
   gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .page-number {
@@ -47,32 +53,119 @@
   cursor: pointer;
   transition: all 0.3s;
   min-width: 44px;
+  text-align: center;
 }
 
 .page-number:hover {
   background-color: #e5e7eb;
+  transform: translateY(-1px);
 }
 
 .page-number.active {
   background-color: #2563eb;
   color: white;
   border-color: #2563eb;
+  transform: translateY(-1px);
 }
 
+/* Tablet Responsive */
+@media (max-width: 1024px) {
+  .pagination {
+    margin: 2.5rem 0;
+    gap: 0.8rem;
+  }
+
+  .pagination-btn {
+    padding: 0.7rem 1.3rem;
+  }
+
+  .page-number {
+    padding: 0.7rem 0.9rem;
+    min-width: 40px;
+  }
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
   .pagination {
     gap: 0.5rem;
     margin: 2rem 0;
+    padding: 0 1rem;
   }
   
   .pagination-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    flex: 1;
+    max-width: 80px;
+  }
+  
+  .page-numbers {
+    gap: 0.3rem;
+    order: 2;
+    width: 100%;
+    margin: 0.5rem 0;
   }
   
   .page-number {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.8rem;
+    padding: 0.6rem 0.7rem;
+    font-size: 0.85rem;
     min-width: 36px;
+    flex: 1;
+    max-width: 40px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .pagination {
+    gap: 0.4rem;
+    margin: 1.5rem 0;
+    padding: 0 0.5rem;
+    flex-direction: column;
+  }
+  
+  .pagination-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+    width: 100%;
+    max-width: 120px;
+  }
+  
+  .page-numbers {
+    gap: 0.3rem;
+    width: 100%;
+    justify-content: center;
+    margin: 0.5rem 0;
+  }
+  
+  .page-number {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+    min-width: 32px;
+    max-width: 35px;
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 320px) {
+  .pagination {
+    padding: 0 0.25rem;
+  }
+
+  .pagination-btn {
+    font-size: 0.75rem;
+    padding: 0.45rem 0.7rem;
+  }
+
+  .page-number {
+    font-size: 0.75rem;
+    padding: 0.45rem 0.5rem;
+    min-width: 28px;
+    max-width: 30px;
+  }
+
+  .page-numbers {
+    gap: 0.2rem;
   }
 }

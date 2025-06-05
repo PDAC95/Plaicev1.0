@@ -1,6 +1,6 @@
 .search-bar-container {
   position: absolute;
-  bottom: -30px;
+  bottom: -40px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -62,6 +62,7 @@
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.3s;
+  width: fit-content;
 }
 
 .advanced-search-btn:hover {
@@ -69,10 +70,23 @@
   color: #374151;
 }
 
+/* Tablet Responsive */
+@media (max-width: 1024px) {
+  .search-bar-container {
+    width: 92%;
+    bottom: -25px;
+  }
+  
+  .search-bar {
+    padding: 1.3rem;
+  }
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
   .search-bar-container {
     width: 95%;
-    bottom: -25px;
+    bottom: -20px;
   }
   
   .search-bar {
@@ -81,9 +95,52 @@
   
   .search-input-group {
     flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
   }
   
-  .search-input, .search-button {
+  .search-input {
+    padding: 0.9rem;
+    font-size: 0.95rem;
+  }
+  
+  .search-button {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.95rem;
     width: 100%;
+  }
+
+  .advanced-search-btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .search-bar-container {
+    width: 96%;
+    bottom: -15px;
+  }
+  
+  .search-bar {
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+  
+  .search-input {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .search-button {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .advanced-search-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
   }
 }

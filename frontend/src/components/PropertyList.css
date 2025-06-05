@@ -30,7 +30,8 @@
   font-size: 1.1rem;
   color: #6b7280;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 0.5rem auto;
+  line-height: 1.6;
 }
 
 .property-grid {
@@ -42,23 +43,118 @@
   max-width: 1200px;
 }
 
-@media (max-width: 768px) {
+/* Large Desktop */
+@media (min-width: 1200px) {
   .property-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .section-header h2 {
-    font-size: 2rem;
-  }
-  
-  .property-list-section {
-    padding: 2rem 0;
+    gap: 2.5rem;
   }
 }
 
+/* Desktop/Laptop */
+@media (max-width: 1199px) and (min-width: 1025px) {
+  .property-list-section .container {
+    padding: 0 1.5rem;
+  }
+  
+  .property-grid {
+    gap: 1.8rem;
+  }
+}
+
+/* Tablet */
 @media (max-width: 1024px) and (min-width: 769px) {
+  .property-list-section {
+    padding: 3rem 0;
+  }
+
+  .property-list-section .container {
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .section-header p {
+    font-size: 1rem;
+  }
+
   .property-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .property-list-section {
+    padding: 2.5rem 0;
+  }
+
+  .property-list-section .container {
+    padding: 0 1rem;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .section-header p {
+    font-size: 0.95rem;
+    padding: 0 1rem;
+  }
+
+  .property-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .property-list-section {
+    padding: 2rem 0;
+  }
+
+  .property-list-section .container {
+    padding: 0 0.75rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .section-header p {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
+
+  .property-grid {
+    gap: 1.2rem;
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 320px) {
+  .property-list-section .container {
+    padding: 0 0.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .property-grid {
+    gap: 1rem;
   }
 }
