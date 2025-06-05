@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import ContactForm from '../components/ContactForm';
 import './PropertyDetail.css';
 
 const PropertyDetail = () => {
@@ -9,6 +10,7 @@ const PropertyDetail = () => {
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showContactForm, setShowContactForm] = useState(false);
 
   useEffect(() => {
     const fetchProperty = async () => {
@@ -30,6 +32,14 @@ const PropertyDetail = () => {
 
   const handleBack = () => {
     navigate('/');
+  };
+
+  const handleContactClick = () => {
+    setShowContactForm(true);
+  };
+
+  const handleCloseContact = () => {
+    setShowContactForm(false);
   };
 
   if (loading) {
@@ -104,13 +114,28 @@ const PropertyDetail = () => {
             <div className="contact-section">
               <h3>Interested in this property?</h3>
               <div className="contact-buttons">
-                <button className="contact-btn primary">Contact Agent</button>
-                <button className="contact-btn secondary">Schedule Viewing</button>
-                <button className="contact-btn secondary">Save to Favorites</button>
+                <button className="contact-btn primary" onClick={handleContactClick}>
+                  Contact Agent
+                </button>
+                <button className="contact-btn secondary" onClick={handleContactClick}>
+                  Schedule Viewing
+                </button>
+                <button className="contact-btn secondary">
+                  Save to Favorites
+                </button>
               </div>
             </div>
           </div>
         </div>
+
+        {showContactForm && (
+          <div className="contact-form-overlay">
+            <ContactForm 
+              propertyTitle={property.title}
+              onClose={handleCloseContact}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
