@@ -13,30 +13,36 @@ export const useFavorites = () => {
 export const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
 
-  // Load favorites from localStorage on component mount
-  useEffect(() => {
+ // Load favorites from localStorage on component mount
+useEffect(() => {
+  try {
     const savedFavorites = localStorage.getItem('place-favorites');
-    if (savedFavorites) {
-      try {
-        setFavorites(JSON.parse(savedFavorites));
-      } catch (error) {
-        console.error('Error loading favorites:', error);
-        setFavorites([]);
+    if (savedFavorites && savedFavorites !== 'undefined' && savedFavorites !== 'null') {
+      const parsedFavorites = JSON.parse(savedFavorites);
+      if (Array.isArray(parsedFavorites) && parsedFavorites.length > 0) {
+        setFavorites(parsedFavorites);
       }
     }
-  }, []);
+  } catch (error) {
+    console.error('Error loading favorites:', error);
+    localStorage.removeItem('place-favorites');
+  }
+}, []);
 
-  // Save favorites to localStorage whenever favorites change
-  useEffect(() => {
+// Save favorites to localStorage whenever favorites change (but not on initial empty load)
+useEffect(() => {
+  // Only save if we have loaded the initial data or if favorites is not empty
+  const savedFavorites = localStorage.getItem('place-favorites');
+  if (savedFavorites !== null || favorites.length > 0) {
     localStorage.setItem('place-favorites', JSON.stringify(favorites));
-  }, [favorites]);
+  }
+}, [favorites]);
 
   const addToFavorites = (property) => {
     setFavorites(prev => {
-      // Check if property is already in favorites
       const isAlreadyFavorite = prev.some(fav => fav._id === property._id);
       if (isAlreadyFavorite) {
-        return prev; // Don't add duplicates
+        return prev;
       }
       return [...prev, property];
     });

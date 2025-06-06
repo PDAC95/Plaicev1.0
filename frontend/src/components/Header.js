@@ -15,9 +15,8 @@ const Header = () => {
         <nav className="nav">
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><a href="/properties">Properties</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
             <li>
               <Link to="/favorites" className="favorites-link">
                 <span className="favorites-icon">❤️</span>
