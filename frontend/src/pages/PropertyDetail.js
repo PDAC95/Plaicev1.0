@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ContactForm from '../components/ContactForm';
+import { useFavorites } from '../context/FavoritesContext';
 import './PropertyDetail.css';
 
 const PropertyDetail = () => {
@@ -11,6 +12,7 @@ const PropertyDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showContactForm, setShowContactForm] = useState(false);
+  const { isFavorite, toggleFavorite } = useFavorites();
 
   useEffect(() => {
     const fetchProperty = async () => {
@@ -152,8 +154,11 @@ const formatArea = (area) => {
                 <button className="contact-btn secondary" onClick={handleContactClick}>
                   Schedule Viewing
                 </button>
-                <button className="contact-btn secondary">
-                  Save to Favorites
+                <button 
+                  className={`contact-btn ${isFavorite(property._id) ? 'primary' : 'secondary'}`}
+                  onClick={() => toggleFavorite(property)}
+                >
+                  {isFavorite(property._id) ? '❤️ Remove from Favorites' : '🤍 Save to Favorites'}
                 </button>
               </div>
             </div>
